@@ -25,9 +25,11 @@ $(document).ready(function () {
                 $("#sel-items").append(`<option value="">Select Item</option>`);
 
                 for(let i = 0; i < products.length; i++){
+                    const product = = products[i];
+                    
                     $("#sel-items").append(`
-                        <option value="${i}">
-                            ${i.name} - ₱${i.sellingPrice}
+                        <option value="${product.id}">
+                            ${product.name} - ₱${product.sellingPrice}
                         </option>
                     `);
                 }
