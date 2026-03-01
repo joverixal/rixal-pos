@@ -14,7 +14,7 @@ $(document).ready(function () {
         // localStorage.clear();
     
         // Redirect to root without showing index.html
-        window.location.href = "/";
+        window.location.href = "/rixal-pos/";
     });
 
     toastr.options = {
