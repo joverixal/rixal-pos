@@ -73,8 +73,9 @@ $(document).ready(function () {
 
     $("#btn-add-item").click(function () {
         const id = $("#inp-id").val();
+        parseInt($('#modalQuantity').val()) || 1
         const stockOnHand = $("#inp-stock-on-hand").val();
-        const quantity = parseInt($("#inp-quantity").val());
+        const quantity = parseInt($('#inp-quantity').val()) || 0
         const sellingPrice = parseFloat($("#inp-selling-price").val());
         const totalAmount = quantity * sellingPrice;
 
@@ -95,7 +96,7 @@ $(document).ready(function () {
             totalAmount
         });
 
-        toastr.success(`Added ${qty} item(s) successfully!`);
+        toastr.success(`Added ${quantity} item(s) successfully!`);
 
         calculateAmountDue();
         $("#mdl-add-item").modal("hide");
