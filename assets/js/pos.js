@@ -25,20 +25,12 @@ $(document).ready(function () {
                 $("#sel-items").append(`<option value="">Select Item</option>`);
 
                 // Skip header row (index 0)
-                for(int = i; i < products.length; i++){
-                    let product = products[i];
-
-                    let productName = product[1];     // Product Name
-                    let stockOnHand = product[6];     // Stock
-                    let sellingPrice = product[4];    // Selling Price
-
-                    if (stockOnHand > 0) {
-                        $("#sel-items").append(`
-                            <option value="${i}">
-                                ${productName} - ₱${sellingPrice}
-                            </option>
-                        `);
-                    }
+                for(let = i; i < products.length; i++){
+                    $("#sel-items").append(`
+                        <option value="${i}">
+                            ${i.name} - ₱${i.sellingPrice}
+                        </option>
+                    `);
                 }
             },
             error: function (err) {
