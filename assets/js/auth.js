@@ -13,9 +13,7 @@ $(document).ready(function () {
         $.ajax({
             url: API_URL,
             method: "GET",
-            data: {
-                action: "getUsers"
-            },
+            data: { action: "login", username: username, password: password },
             success: function (response) {
 
                 if (typeof response === "string") {
