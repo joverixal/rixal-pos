@@ -50,9 +50,9 @@ $(document).ready(function () {
 
         let product = products[selectedIndex];
 
-        $("#lbl-item-title").text(product[1]);
-        $("#inp-stock-on-hand").val(product[6]);
-        $("#inp-selling-price").val(product[4]);
+        $("#lbl-item-title").text(product.name);
+        $("#inp-stock-on-hand").val(product.stockOnHand);
+        $("#inp-selling-price").val(product.sellingPrice);
         $("#inp-quantity").val(1);
 
         let modal = new bootstrap.Modal(document.getElementById("mdl-add-item"));
