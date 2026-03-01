@@ -176,7 +176,7 @@ $(document).ready(function () {
                 amountDue: amountDue,
                 cashReceived: cashReceived,
                 changed: changed,
-                carts: carts
+                carts: JSON.stringify(carts)
             },
             success: function (response) {
 
