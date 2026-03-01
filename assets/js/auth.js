@@ -27,7 +27,7 @@ $(document).ready(function () {
                     localStorage.setItem("isLoggedIn", true);
                     localStorage.setItem("user", JSON.stringify(response.user));
 
-                    window.location.href = "main.html"; // redirect to main menu
+                    window.location.href = "pos.html"; // redirect to main menu
 
                 } else {
                     alert(response.message || "Invalid username or password");
