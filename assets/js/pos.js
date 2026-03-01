@@ -168,12 +168,10 @@ $(document).ready(function () {
         if (carts.length === 0) {
             toastr.error("No added product!");
         }
-
         $.ajax({
             url: API_URL,
-            method: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({
+            method: "GET",
+            data: {
                 action: "cashPayment",
                 payment: [
                     amountDue,
@@ -181,9 +179,31 @@ $(document).ready(function () {
                     changed,
                 ],
                 carts
-            }),
-            success: function () {
-                toastr.success("Successfuly cash payment saved!");
+            },
+            success: function (response) {
+
+                if (typeof response === "string") {
+                    response = JSON.parse(response);
+                }
+
+                products = response.products;
+
+                $("#sel-products").empty();
+                $("#sel-products").append(`<option value="">Select Item</option>`);
+
+                for(let i = 0; i < products.length; i++){
+                    const product = products[i];
+                    
+                    $("#sel-products").append(`
+                        <option value="${product.id}">
+                            ${product.name} - ₱${product.sellingPrice}
+                        </option>
+                    `);
+                }
+            },
+            error: function (err) {
+                console.log("Error loading products", err);
+                alert("Failed to load products");
             }
         });
 
