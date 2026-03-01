@@ -13,8 +13,8 @@ $(document).ready(function () {
         // Optional: clear everything if you want
         // localStorage.clear();
     
-        // Redirect to login page
-        window.location.href = "index.html";
+        // Redirect to root without showing index.html
+        window.location.href = "/";
     });
 
     toastr.options = {
