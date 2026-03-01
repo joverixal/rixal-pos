@@ -25,7 +25,7 @@ $(document).ready(function () {
                 $("#sel-items").append(`<option value="">Select Item</option>`);
 
                 // Skip header row (index 0)
-                    products.map(i => i{
+                    products.map(i => {
                     let product = products[i];
 
                     let productName = product[1];     // Product Name
