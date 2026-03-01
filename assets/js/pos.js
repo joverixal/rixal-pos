@@ -82,7 +82,7 @@ $(document).ready(function () {
         const existingIndex = carts.findIndex(item => item.id === id);
         
         if(stockOnHand <=0){
-            toastr.error("Please enter a valid quantity!");
+            toastr.error("Insuficient stock on hand!");
             return;
         }
 
@@ -103,7 +103,7 @@ $(document).ready(function () {
 
             var totalQuantity = quantity + carts[existingIndex].quantity;
             if(totalQuantity > stockOnHand){
-                toastr.error("Please enter a valid quantity!");
+                toastr.error("Insuficient stock on hand!");
             return;
             }
             
@@ -161,26 +161,29 @@ $(document).ready(function () {
 
     $("#btn-cash").click(function () {
 
-        let amountDue = $("#inp-amount-due").val();
-        let cashReceived = $("#inp-cash-received").val();
-        let changed = $("#inp-changed").val();
+        const amountDue = parseFloat($('#inp-amount-due').val()) || 0;
+        const cashReceived = $("#inp-cash-received").val();
+        const changed = $("#inp-changed").val();
+
+        if (carts.length === 0) {
+            toastr.error("No added product!");
+        }
 
         $.ajax({
             url: API_URL,
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({
-                action: "addPayment",
+                action: "cash",
                 payment: [
-                    Date.now(),
                     amountDue,
                     cashReceived,
                     changed,
-                    new Date()
-                ]
+                ],
+                carts
             }),
             success: function () {
-                alert("Payment Saved");
+                toastr.success("Successfuly payment added!");
             }
         });
 
