@@ -16,42 +16,21 @@ $(document).ready(function () {
             data: { action: "login", username: username, password: password },
             success: function (response) {
 
+                // Parse if string
                 if (typeof response === "string") {
                     response = JSON.parse(response);
                 }
 
-                let users = response;
-                let isValidUser = false;
-                let loggedInUser = null;
-
-                // Skip header row
-                for (let i = 0; i < users.length; i++) {
-
-                    let user = users[i];
-
-                    let sheetUsername = user[2];
-                    let sheetPassword = user[3];
-
-                    if (username === sheetUsername && password === sheetPassword) {
-                        isValidUser = true;
-                        loggedInUser = {
-                            id: user[0],
-                            name: user[1],
-                            username: user[2]
-                        };
-                        break;
-                    }
-                }
-
-                if (isValidUser) {
+                // Backend already validates user
+                if (response.success) {
 
                     localStorage.setItem("isLoggedIn", true);
-                    localStorage.setItem("user", JSON.stringify(loggedInUser));
+                    localStorage.setItem("user", JSON.stringify(response.user));
 
-                    window.location.href = "main.html";
+                    window.location.href = "main.html"; // redirect to main menu
 
                 } else {
-                    alert("Invalid username or password");
+                    alert(response.message || "Invalid username or password");
                 }
 
             },
