@@ -116,7 +116,6 @@ $(document).ready(function () {
 
         toastr.success(`Added ${quantity} item(s) successfully!`);
 
-        calculateAmountDue();
         $("#mdl-add-item").modal("hide");
     });
 
@@ -139,7 +138,7 @@ $(document).ready(function () {
                 <div class="d-flex justify-content-between align-items-center mb-2 border p-2 rounded">
                     <div>
                         <strong>Product Name: ${item.name}</strong><br>
-                        Qty: ${item.quantity} x $${item.sellingPrice} = $${item.totalAmount}
+                        Qty: ${item.quantity} x ₱${item.sellingPrice} = ₱${item.totalAmount}
                     </div>
                     <button class="btn btn-sm btn-danger btn-remove" data-index="${index}">Remove</button>
                 </div>
@@ -149,6 +148,8 @@ $(document).ready(function () {
         });
     
         $("#inp-amount-due").val(totalAmountDue);
+        $("#inp-cash-received").val(totalAmountDue);
+        $("#inp-changed").val(0);
     }       
     
     // Remove product
@@ -157,19 +158,6 @@ $(document).ready(function () {
         carts.splice(index, 1);
         updateCartUI();
     });
-
-    function calculateAmountDue() {
-
-        let amountDue = 0;
-
-        carts.forEach(item => {
-            amountDue += item.totalAmount;
-        });
-
-        $("#inp-amount-due").val(amountDue);
-        $("#inp-cash-received").val(amountDue);
-        $("#inp-amount-due").val(0);
-    }
 
     $("#btn-cash").click(function () {
 
