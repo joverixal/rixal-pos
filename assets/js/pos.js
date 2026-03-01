@@ -65,6 +65,7 @@ $(document).ready(function () {
         const modal = $('#mdl-add-item');
         modal.find("#lbl-item-title").text(product.name);
         modal.find("#inp-id").val(product.id);
+        modal.find("#inp-unit-price").val(product.unitPrice);
         modal.find("#inp-profit").val(product.profit);
         modal.find("#inp-stock-on-hand").val(product.stockOnHand);
         modal.find("#inp-selling-price").val(product.sellingPrice);
@@ -88,6 +89,7 @@ $(document).ready(function () {
 
     $("#btn-add-item").click(function () {
         const id = $("#inp-id").val();
+        const unitPrice = $("#inp-unit-price").val();
         const profit = $("#inp-profit").val();
         const name = $("#lbl-item-title").text();
         const stockOnHand = $("#inp-stock-on-hand").val();
@@ -115,6 +117,7 @@ $(document).ready(function () {
             }
             carts.push({
                 id,
+                unitPrice,
                 name,
                 quantity,
                 sellingPrice,
