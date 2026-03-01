@@ -164,12 +164,18 @@ $(document).ready(function () {
     $("#btn-cash").click(function () {
 
         const amountDue = parseFloat($('#inp-amount-due').val()) || 0;
-        const cashReceived = $("#inp-cash-received").val();
-        const changed = $("#inp-changed").val();
+        const cashReceived = parseFloat($('#inp-cash-received').val()) || 0;
+        const changed = parseFloat($('#inp-changed').val()) || 0;
 
         if (carts.length === 0) {
             toastr.error("No added product!");
+            return;
         }
+        if (cashReceived < amountDue) {
+            toastr.error("Insuficient cash received!");
+            return;
+        }
+        
         $.ajax({
             url: API_URL,
             method: "GET",
