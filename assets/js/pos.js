@@ -118,6 +118,8 @@ $(document).ready(function () {
         });
 
         $("#inp-amount-due").val(amountDue);
+        $("#inp-cash-received").val(amountDue);
+        $("#inp-amount-due").val(0);
     }
 
     $("#btn-cash").click(function () {
