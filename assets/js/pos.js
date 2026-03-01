@@ -44,12 +44,11 @@ $(document).ready(function () {
 
     $("#sel-items").change(function () {
 
-        let selectedIndex = $(this).val();
+        let productId = $(this).val();
 
-        if (!selectedIndex) return;
+        if (!productId) return;
 
-        let product = products[selectedIndex];
-
+        const product = products.find(a => a.id === productId);
         $("#lbl-item-title").text(product.name);
         $("#inp-stock-on-hand").val(product.stockOnHand);
         $("#inp-selling-price").val(product.sellingPrice);
