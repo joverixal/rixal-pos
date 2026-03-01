@@ -25,7 +25,7 @@ $(document).ready(function () {
                 $("#sel-items").append(`<option value="">Select Item</option>`);
 
                 for(let i = 0; i < products.length; i++){
-                    const product = = products[i];
+                    const product = products[i];
                     
                     $("#sel-items").append(`
                         <option value="${product.id}">
