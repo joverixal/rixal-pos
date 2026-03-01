@@ -39,7 +39,7 @@ $(document).ready(function () {
                             </option>
                         `);
                     }
-                }
+                });
             },
             error: function (err) {
                 console.log("Error loading products", err);
