@@ -24,8 +24,7 @@ $(document).ready(function () {
                 $("#sel-items").empty();
                 $("#sel-items").append(`<option value="">Select Item</option>`);
 
-                // Skip header row (index 0)
-                for(let = i; i < products.length; i++){
+                for(let i = 0; i < products.length; i++){
                     $("#sel-items").append(`
                         <option value="${i}">
                             ${i.name} - ₱${i.sellingPrice}
