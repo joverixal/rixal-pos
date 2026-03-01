@@ -179,6 +179,7 @@ $(document).ready(function () {
                 carts: JSON.stringify(carts)
             },
             success: function (response) {
+                $("#sel-products").val(null);
                 loadProducts();
                 carts=[];
                 updateCartUI();
