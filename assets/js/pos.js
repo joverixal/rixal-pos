@@ -90,7 +90,6 @@ $(document).ready(function () {
             toastr.error("Please enter a valid quantity!");
             return;
         }
-
     
         if (existingIndex === -1) {
             carts.push({
@@ -102,7 +101,7 @@ $(document).ready(function () {
             });
         } else {
 
-            var totalQuantity = quantity + existingIndex.quantity;
+            var totalQuantity = quantity + carts[existingIndex].quantity;
             if(totalQuantity > stockOnHand){
                 toastr.error("Please enter a valid quantity!");
             return;
@@ -139,7 +138,7 @@ $(document).ready(function () {
             const itemHtml = `
                 <div class="d-flex justify-content-between align-items-center mb-2 border p-2 rounded">
                     <div>
-                        <strong>Product ID: ${item.id}</strong><br>
+                        <strong>Product Name: ${item.name}</strong><br>
                         Qty: ${item.quantity} x $${item.sellingPrice} = $${item.totalAmount}
                     </div>
                     <button class="btn btn-sm btn-danger btn-remove" data-index="${index}">Remove</button>
