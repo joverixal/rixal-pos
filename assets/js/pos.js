@@ -58,6 +58,16 @@ $(document).ready(function () {
 
     });
 
+    $("#btn-increase").click(function() {
+        let qty = parseInt($("#inp-quantity").val()) || 1;
+        $("#inp-quantity").val(qty + 1);
+    });
+    
+    $("#btn-decrease").click(function() {
+        let qty = parseInt($("#inp-quantity").val()) || 1;
+        if (qty > 1) $("#inp-quantity").val(qty - 1);
+    });
+
     $("#btn-add-item").click(function () {
 
         let quantity = parseInt($("#inp-quantity").val());
