@@ -1,5 +1,5 @@
 let products = [];
-let cart = [];
+let carts = [];
 
 $(document).ready(function () {
 
@@ -49,12 +49,15 @@ $(document).ready(function () {
         if (!productId) return;
 
         const product = products.find(a => a.id === productId);
-        $("#lbl-item-title").text(product.name);
-        $("#inp-stock-on-hand").val(product.stockOnHand);
-        $("#inp-selling-price").val(product.sellingPrice);
-        $("#inp-quantity").val(1);
 
-        const modal = $('#mdl-add-item').modal("show");
+        const modal = $('#mdl-add-item');
+        modal.find("#lbl-item-title").text(product.name);
+        modal.find("#inp-id").val(product.stockOnHand);
+        modal.find("#inp-stock-on-hand").val(product.stockOnHand);
+        modal.find("#inp-selling-price").val(product.sellingPrice);
+        modal.find("#inp-quantity").val(1);
+
+        modal.modal("show");
 
     });
 
@@ -69,16 +72,30 @@ $(document).ready(function () {
     });
 
     $("#btn-add-item").click(function () {
+        const id = $("#inp-id").val();
+        const stockOnHand = $("#inp-stock-on-hand").val();
+        const quantity = parseInt($("#inp-quantity").val());
+        const sellingPrice = parseFloat($("#inp-selling-price").val());
+        const totalAmount = quantity * sellingPrice;
 
-        let quantity = parseInt($("#inp-quantity").val());
-        let sellingPrice = parseFloat($("#inp-selling-price").val());
-        let totalAmount = quantity * sellingPrice;
+        if(stockOnHand <=0){
+            toastr.error("Please enter a valid quantity!");
+            return;
+        }
 
-        cart.push({
+        if(quantity <=0){
+            toastr.error("Please enter a valid quantity!");
+            return;
+        }
+
+        carts.push({
+            id,
             quantity,
             sellingPrice,
             totalAmount
         });
+
+        toastr.success(`Added ${qty} item(s) successfully!`);
 
         calculateAmountDue();
         $("#mdl-add-item").modal("hide");
@@ -96,7 +113,7 @@ $(document).ready(function () {
 
         let amountDue = 0;
 
-        cart.forEach(item => {
+        carts.forEach(item => {
             amountDue += item.totalAmount;
         });
 
