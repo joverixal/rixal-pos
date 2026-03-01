@@ -62,6 +62,7 @@ $(document).ready(function () {
         const modal = $('#mdl-add-item');
         modal.find("#lbl-item-title").text(product.name);
         modal.find("#inp-id").val(product.id);
+        modal.find("#inp-profit").val(product.id);
         modal.find("#inp-stock-on-hand").val(product.stockOnHand);
         modal.find("#inp-selling-price").val(product.sellingPrice);
         modal.find("#inp-quantity").val(1);
@@ -84,6 +85,7 @@ $(document).ready(function () {
 
     $("#btn-add-item").click(function () {
         const id = $("#inp-id").val();
+        const profit = $("#inp-profit").val();
         const name = $("#lbl-item-title").text();
         const stockOnHand = $("#inp-stock-on-hand").val();
         const quantity = parseInt($('#inp-quantity').val()) || 0
@@ -113,6 +115,7 @@ $(document).ready(function () {
                 name,
                 quantity,
                 sellingPrice,
+                profit,
                 totalAmount: sellingPrice * quantity
             });
         } else {
