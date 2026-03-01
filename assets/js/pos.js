@@ -73,11 +73,14 @@ $(document).ready(function () {
 
     $("#btn-add-item").click(function () {
         const id = $("#inp-id").val();
+        const name = modal.find("#lbl-item-title").text();
         const stockOnHand = $("#inp-stock-on-hand").val();
         const quantity = parseInt($('#inp-quantity').val()) || 0
         const sellingPrice = parseFloat($("#inp-selling-price").val());
         const totalAmount = quantity * sellingPrice;
 
+        const existingIndex = carts.findIndex(item => item.id === id);
+        
         if(stockOnHand <=0){
             toastr.error("Please enter a valid quantity!");
             return;
@@ -88,12 +91,29 @@ $(document).ready(function () {
             return;
         }
 
-        carts.push({
-            id,
-            quantity,
-            sellingPrice,
-            totalAmount
-        });
+    
+        if (existingIndex === -1) {
+            carts.push({
+                id,
+                name,
+                quantity,
+                sellingPrice,
+                totalAmount: sellingPrice * quantity
+            });
+        } else {
+
+            var totalQuantity = quantity + existingIndex.quantity;
+            if(totalQuantity > stockOnHand){
+                toastr.error("Please enter a valid quantity!");
+            return;
+            }
+            
+            // Update quantity and totalAmount
+            carts[existingIndex].quantity += quantity;
+            carts[existingIndex].totalAmount = carts[existingIndex].sellingPrice * carts[existingIndex].quantity;
+        }
+    
+        updateCartUI();
 
         toastr.success(`Added ${quantity} item(s) successfully!`);
 
@@ -107,6 +127,36 @@ $(document).ready(function () {
 
         let changed = cashReceived - amountDue;
         $("#inp-changed").val(changed);
+    });
+
+    function updateCartUI() {
+        $("#div-added-items").empty();
+        let totalAmountDue = 0;
+    
+        carts.forEach((item, index) => {
+            totalAmountDue += item.totalAmount;
+    
+            const itemHtml = `
+                <div class="d-flex justify-content-between align-items-center mb-2 border p-2 rounded">
+                    <div>
+                        <strong>Product ID: ${item.id}</strong><br>
+                        Qty: ${item.quantity} x $${item.sellingPrice} = $${item.totalAmount}
+                    </div>
+                    <button class="btn btn-sm btn-danger btn-remove" data-index="${index}">Remove</button>
+                </div>
+            `;
+    
+            $("#div-added-items").append(itemHtml);
+        });
+    
+        $("#inp-amount-due").val(totalAmountDue);
+    }       
+    
+    // Remove product
+    $(document).on("click", ".btn-remove", function() {
+        const index = $(this).data("index");
+        carts.splice(index, 1);
+        updateCartUI();
     });
 
     function calculateAmountDue() {
