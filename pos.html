@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>POS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/pos.js"></script>
+</head>
+<body>
+
+<div class="container py-3">
+
+  <select id="sel-items" class="form-select mb-3"></select>
+
+  <div id="div-added-items" class="mb-3"></div>
+
+  <input type="number" id="inp-amount-due" class="form-control mb-2" placeholder="Amount Due" readonly>
+  <input type="number" id="inp-cash-received" class="form-control mb-2" placeholder="Cash Received">
+  <input type="number" id="inp-changed" class="form-control mb-3" placeholder="Changed" readonly>
+
+  <button id="btn-cash" class="btn btn-success w-100 mb-2">Cash</button>
+  <button id="btn-credit" class="btn btn-secondary w-100">Credit</button>
+
+</div>
+
+<div class="modal fade" id="mdl-add-item">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 id="lbl-item-title"></h5>
+      </div>
+
+      <div class="modal-body">
+        <input type="number" id="inp-stock-on-hand" class="form-control mb-2" readonly>
+        <input type="number" id="inp-selling-price" class="form-control mb-2" readonly>
+        <input type="number" id="inp-quantity" class="form-control" placeholder="Quantity">
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button id="btn-add-item" class="btn btn-primary">Add</button>
+      </div>
+
+    </div>
+  </div>
+</div>
