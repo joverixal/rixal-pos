@@ -179,25 +179,10 @@ $(document).ready(function () {
                 carts: JSON.stringify(carts)
             },
             success: function (response) {
-
-                if (typeof response === "string") {
-                    response = JSON.parse(response);
-                }
-
-                products = response.products;
-
-                $("#sel-products").empty();
-                $("#sel-products").append(`<option value="">Select Item</option>`);
-
-                for(let i = 0; i < products.length; i++){
-                    const product = products[i];
-                    
-                    $("#sel-products").append(`
-                        <option value="${product.id}">
-                            ${product.name} - ₱${product.sellingPrice}
-                        </option>
-                    `);
-                }
+                loadProducts();
+                carts=[];
+                updateCartUI();
+                toastr.error("No added product!");
             },
             error: function (err) {
                 console.log("Error loading products", err);
