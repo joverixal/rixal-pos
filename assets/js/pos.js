@@ -3,6 +3,15 @@ let carts = [];
 
 $(document).ready(function () {
 
+    toastr.options = {
+        "closeButton": true,           // Show close button
+        "progressBar": true,           // Show progress bar
+        "positionClass": "toast-bottom-left", // Bottom left corner
+        "timeOut": "3000",             // Auto hide after 3s
+        "extendedTimeOut": "1000",
+        "preventDuplicates": true
+    };
+
     loadProducts();
 
     function loadProducts() {
