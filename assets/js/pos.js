@@ -52,7 +52,7 @@ $(document).ready(function () {
 
         const modal = $('#mdl-add-item');
         modal.find("#lbl-item-title").text(product.name);
-        modal.find("#inp-id").val(product.stockOnHand);
+        modal.find("#inp-id").val(product.id);
         modal.find("#inp-stock-on-hand").val(product.stockOnHand);
         modal.find("#inp-selling-price").val(product.sellingPrice);
         modal.find("#inp-quantity").val(1);
