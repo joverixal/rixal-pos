@@ -14,7 +14,7 @@ $(document).ready(function () {
             url: API_URL,
             method: "GET",
             data: {
-                action: "getUsers"
+                action: "   "
             },
             success: function (response) {
 
