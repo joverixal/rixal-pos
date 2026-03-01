@@ -173,11 +173,9 @@ $(document).ready(function () {
             method: "GET",
             data: {
                 action: "cashPayment",
-                payment: [
-                    amountDue,
-                    cashReceived,
-                    changed,
-                ],
+                amountDue: amountDue,
+                cashReceived: cashReceived,
+                changed: changed,
                 carts: carts
             },
             success: function (response) {
