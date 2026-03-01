@@ -44,7 +44,7 @@ $(document).ready(function () {
 
     $("#sel-products").change(function () {
 
-        let productId = $(this).val();
+        const productId = $(this).val();
 
         if (!productId) return;
 
@@ -58,6 +58,8 @@ $(document).ready(function () {
         modal.find("#inp-quantity").val(1);
 
         modal.modal("show");
+
+        $("#sel-products").val(null);
 
     });
 
@@ -183,7 +185,7 @@ $(document).ready(function () {
                 loadProducts();
                 carts=[];
                 updateCartUI();
-                toastr.error("No added product!");
+                toastr.success("Cash payment successfully saved!");
             },
             error: function (err) {
                 console.log("Error loading products", err);
