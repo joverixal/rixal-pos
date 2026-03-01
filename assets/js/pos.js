@@ -21,13 +21,13 @@ $(document).ready(function () {
 
                 products = response.products;
 
-                $("#sel-items").empty();
-                $("#sel-items").append(`<option value="">Select Item</option>`);
+                $("#sel-products").empty();
+                $("#sel-products").append(`<option value="">Select Item</option>`);
 
                 for(let i = 0; i < products.length; i++){
                     const product = products[i];
                     
-                    $("#sel-items").append(`
+                    $("#sel-products").append(`
                         <option value="${product.id}">
                             ${product.name} - ₱${product.sellingPrice}
                         </option>
@@ -42,7 +42,7 @@ $(document).ready(function () {
 
     }
 
-    $("#sel-items").change(function () {
+    $("#sel-products").change(function () {
 
         let productId = $(this).val();
 
