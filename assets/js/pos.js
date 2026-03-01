@@ -54,7 +54,7 @@ $(document).ready(function () {
         $("#inp-selling-price").val(product.sellingPrice);
         $("#inp-quantity").val(1);
 
-        let modal = new bootstrap.Modal(document.getElementById("mdl-add-item"));
+        const modal = $('#mdl-add-item');
         modal.show();
 
     });
