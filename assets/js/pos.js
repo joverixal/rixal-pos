@@ -55,7 +55,10 @@ $(document).ready(function () {
 
         const productId = $(this).val();
 
-        if (!productId) return;
+        if (!productId) {
+            toastr.error("Unkwown select product!");
+            return;
+        };
 
         const product = products.find(a => a.id === productId);
 
