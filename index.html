@@ -1,28 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>POS Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Login</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Config: set your Google Apps Script URL -->
+    <script>
+        const API_URL = "https://script.google.com/macros/s/AKfycbyaas-f7l8XpE6QxqS09sdLvOuUuDIbnId_JCbPn1_l3HKVGz4KFdQhEormRkThWgx4/exec";
+    </script>
 </head>
-<body class="bg-light">
+<body class="bg-light d-flex justify-content-center align-items-center vh-100">
 
-<div class="container vh-100 d-flex justify-content-center align-items-center">
-  <div class="card w-100 shadow-sm">
-    <div class="card-body">
-      <h4 class="text-center mb-3">POS Login</h4>
+    <div class="card p-4 shadow-sm w-100" style="max-width: 400px;">
+        <h3 class="text-center mb-4">POS Login</h3>
 
-      <input type="text" id="inp-username" class="form-control mb-2" placeholder="Username">
-      <input type="password" id="inp-password" class="form-control mb-3" placeholder="Password">
+        <div class="mb-3">
+            <label for="inp-username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="inp-username" placeholder="Enter username">
+        </div>
 
-      <button id="btn-login" class="btn btn-primary w-100">Login</button>
+        <div class="mb-3">
+            <label for="inp-password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inp-password" placeholder="Enter password">
+        </div>
+
+        <button id="btn-login" class="btn btn-primary w-100">Logins</button>
     </div>
-  </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="assets/js/config.js"></script>
-<script src="assets/js/auth.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $("#btn-login").click(function() {
+
+                const username = $("#inp-username").val().trim();
+                const password = $("#inp-password").val().trim();
+
+                if (!username || !password) {
+                    alert("Please enter username and password");
+                    return;
+                }
+
+                $.ajax({
+                    url: API_URL,
+                    method: "GET",
+                    data: { action: "getUsers" },
+                    success: function(response) {
+
+                        if (typeof response === "string") {
+                            response = JSON.parse(response);
+                        }
+
+                        const users = response;
+                        const loggedInUser = users.find(u => u.username === username && u.password === password);
+
+                        if (loggedInUser) {
+                            localStorage.setItem("isLoggedIn", true);
+                            localStorage.setItem("user", JSON.stringify(loggedInUser));
+                            window.location.href = "main.html"; // Redirect to main menu
+                        } else {
+                            alert("Invalid username or password");
+                        }
+                    },
+                    error: function(err) {
+                        console.log(err);
+                        alert("Failed to connect to server");
+                    }
+                });
+
+            });
+
+            // Optional: press Enter to login
+            $("#inp-password").keypress(function(e) {
+                if (e.which === 13) $("#btn-login").click();
+            });
+
+        });
+    </script>
 
 </body>
 </html>
