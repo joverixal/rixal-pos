@@ -37,16 +37,12 @@
     #div-added-items {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem; /* spacing between items */
-      max-height: none; /* grow naturally if <= 3 items */
-      overflow-y: visible;
-    }
-    
-    /* Scroll when more than 3 items */
-    #div-added-items:has(.item:nth-child(4)) {
-      max-height: 200px; /* adjust depending on item height */
+      gap: 0.5rem;
+      
+      /* Always use max-height based on ~3 items */
+      max-height: 180px; /* adjust depending on your item height */
       overflow-y: auto;
-      padding-right: 0.25rem; /* optional for scrollbar space */
+      padding-right: 0.25rem; /* optional for scrollbar */
     }
     
   </style>
