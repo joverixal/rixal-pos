@@ -73,7 +73,6 @@ $(document).ready(function () {
 
     $("#btn-add-item").click(function () {
         const id = $("#inp-id").val();
-        parseInt($('#modalQuantity').val()) || 1
         const stockOnHand = $("#inp-stock-on-hand").val();
         const quantity = parseInt($('#inp-quantity').val()) || 0
         const sellingPrice = parseFloat($("#inp-selling-price").val());
