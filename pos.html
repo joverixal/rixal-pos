@@ -32,38 +32,39 @@
   <div id="div-added-items" class="mb-3"></div>
 
   <!-- Amount Due -->
-  <div class="mb-3">
-    <label for="inp-amount-due" class="form-label fw-semibold">Amount Due</label>
-    <input type="number" id="inp-amount-due" 
-           class="form-control" 
-           placeholder="Amount Due" 
+  <div class="form-floating mb-3">
+    <input type="number"
+           id="inp-amount-due"
+           class="form-control"
+           placeholder="0"
            readonly disabled>
+    <label for="inp-amount-due">Amount Due</label>
   </div>
 
   <!-- Cash Received with Clear Button -->
-  <div class="mb-3">
-    <label for="inp-cash-received" class="form-label fw-semibold">Cash Received</label>
+  <div class="form-floating mb-3">
     <div class="input-group">
-      <input type="number" 
-             id="inp-cash-received" 
-             class="form-control" 
-             placeholder="Enter cash received">
-      <button class="btn btn-outline-secondary" 
-              type="button" 
+      <input type="number"
+             id="inp-cash-received"
+             class="form-control"
+             placeholder="0">
+      <button class="btn btn-outline-secondary"
+              type="button"
               id="btn-clear-cash">
         ✕
       </button>
+      <label for="inp-cash-received">Cash Received</label>
     </div>
   </div>
 
   <!-- Changed -->
-  <div class="mb-3">
-    <label for="inp-changed" class="form-label fw-semibold">Changed</label>
-    <input type="number" 
-           id="inp-changed" 
-           class="form-control" 
-           placeholder="Changed" 
+  <div class="form-floating mb-3">
+    <input type="number"
+           id="inp-changed"
+           class="form-control"
+           placeholder="0"
            readonly disabled>
+    <label for="inp-changed">Changed</label>
   </div>
 
   <button id="btn-cash" class="btn btn-success w-100 mb-2">Cash</button>
