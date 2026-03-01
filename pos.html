@@ -34,10 +34,18 @@
       margin-bottom: 0.2rem;
     }
 
-    #scrollable-container {
-      max-height: calc(100vh - 400px); /* adjust 400px based on inputs + buttons + bottom nav */
+    #div-added-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem; /* spacing between items */
+      /* Optional border or padding */
+      padding-right: 0.25rem;
+    }
+    
+    /* Scroll when more than 5 items */
+    #div-added-items:has(.item:nth-child(5)) {
+      max-height: 250px; /* adjust height to fit 5 items */
       overflow-y: auto;
-      padding-right: 0.5rem; /* optional padding for scrollbar */
     }
   </style>
 
@@ -57,7 +65,8 @@
 
   <select id="sel-products" class="form-select mb-3"></select>
 
-  <div id="scrollable-container" class="mb-3">
+  <div class="mb-3">
+    
   <div id="div-added-items"></div>
 
   <!-- Amount Due -->
