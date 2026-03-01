@@ -166,7 +166,9 @@ $(document).ready(function () {
                         <strong>Product Name: ${item.name}</strong><br>
                         Qty: ${item.quantity} x ₱${item.sellingPrice} = ₱${item.totalAmount}
                     </div>
-                    <button class="btn btn-sm btn-danger btn-remove" data-index="${index}">Remove</button>
+                    <button class="btn btn-sm btn-danger btn-remove" data-index="${index}">
+                      <i class="bi bi-trash"></i>
+                    </button>
                 </div>
             `;
     
