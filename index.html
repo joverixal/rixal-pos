@@ -36,18 +36,39 @@
     }
 
     .login-btn {
-      background-color: #28a745;
-      border: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  background-color: #28a745;
+  color: #fff;               /* white text */
+  border: none;
+  font-weight: 600;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+  border-radius: 0.5rem;     /* optional rounded corners */
+}
 
-    .login-btn i {
-      margin-right: 0.5rem;
-    }
+.login-btn i {
+  margin-right: 0.5rem;
+}
+
+/* Hover state */
+.login-btn:hover {
+  background-color: #218838; /* slightly darker green */
+  color: #fff;               /* keep text white */
+}
+
+/* Active / pressed state */
+.login-btn:active {
+  background-color: #1e7e34; /* even darker green */
+  color: #fff;
+  transform: scale(0.97);    /* subtle press effect */
+}
+
+/* Focus outline (optional) */
+.login-btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+}
 
     .form-floating input {
       height: 50px;
