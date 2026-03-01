@@ -25,6 +25,9 @@
       border: none;
       font-weight: 600;
       font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .login-btn i {
@@ -53,9 +56,12 @@
         <label for="inp-password">Password</label>
       </div>
 
-      <button id="btn-login" class="btn login-btn w-100">
-        <i class="bi bi-box-arrow-in-right"></i> Login
-      </button>
+      <!-- Wrapped login button -->
+      <div class="d-grid">
+        <button id="btn-login" class="btn login-btn w-100">
+          <i class="bi bi-box-arrow-in-right"></i> Login
+        </button>
+      </div>
     </div>
   </div>
 
