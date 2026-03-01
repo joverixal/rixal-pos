@@ -185,6 +185,11 @@ $(document).ready(function () {
             toastr.error("Insuficient cash received!");
             return;
         }
+
+        const btnCash = $('#btn-cash');
+        const btnCredit = $('#btn-credit');
+        btnCash.prop('disabled', true).text('Cash - Processing...');
+        btnCredit.prop('disabled', true);
         
         $.ajax({
             url: API_URL,
@@ -202,9 +207,14 @@ $(document).ready(function () {
                 carts=[];
                 updateCartUI();
                 toastr.success("Cash payment successfully saved!");
+
+                btnCash.prop('disabled', false).text('Cash');
+                btnCredit.prop('disabled', false);
             },
             error: function (err) {
                 console.log("Error loading products", err);
+                btnCash.prop('disabled', false).text('Cash');
+                btnCredit.prop('disabled', false);
                 alert("Failed to load products");
             }
         });
