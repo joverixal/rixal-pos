@@ -174,7 +174,7 @@ $(document).ready(function () {
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({
-                action: "cash",
+                action: "cashPayment",
                 payment: [
                     amountDue,
                     cashReceived,
@@ -183,7 +183,7 @@ $(document).ready(function () {
                 carts
             }),
             success: function () {
-                toastr.success("Successfuly payment added!");
+                toastr.success("Successfuly cash payment saved!");
             }
         });
 
