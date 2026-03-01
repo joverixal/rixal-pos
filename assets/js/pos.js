@@ -103,6 +103,11 @@ $(document).ready(function () {
         }
     
         if (existingIndex === -1) {
+
+            if(quantity > stockOnHand){
+                toastr.error("Please enter a valid quantity!");
+                return;
+            }
             carts.push({
                 id,
                 name,
