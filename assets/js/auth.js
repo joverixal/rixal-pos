@@ -27,7 +27,7 @@ $(document).ready(function () {
                 let loggedInUser = null;
 
                 // Skip header row
-                for (let i = 1; i < users.length; i++) {
+                for (let i = 0; i < users.length; i++) {
 
                     let user = users[i];
 
