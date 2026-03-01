@@ -19,7 +19,7 @@ $(document).ready(function () {
                     response = JSON.parse(response);
                 }
 
-                products = response;
+                products = response.products;
 
                 $("#sel-items").empty();
                 $("#sel-items").append(`<option value="">Select Item</option>`);
