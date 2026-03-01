@@ -122,10 +122,20 @@ $(document).ready(function () {
     });
 
     $("#inp-cash-received").keyup(function () {
-        let amountDue = parseFloat($("#inp-amount-due").val());
-        let cashReceived = parseFloat($(this).val());
+        const amountDue = parseFloat($('#inp-amount-due').val()) || 0;
+        const cashReceived = parseFloat($(this).val()) || 0;
 
-        let changed = cashReceived - amountDue;
+        const changed = cashReceived - amountDue;
+        $("#inp-changed").val(changed);
+    });
+
+    $("#btn-clear-cash").click(function() {
+        $("#inp-cash-received").val("").focus();
+
+        const amountDue = parseFloat($('#inp-amount-due').val()) || 0;
+        const cashReceived = parseFloat($(this).val()) || 0;
+
+        const changed = cashReceived - amountDue;
         $("#inp-changed").val(changed);
     });
 
