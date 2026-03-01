@@ -25,7 +25,7 @@ $(document).ready(function () {
                 $("#sel-items").append(`<option value="">Select Item</option>`);
 
                 // Skip header row (index 0)
-                    products.foreach(i => {
+                for(int = i; i < products.length; i++){
                     let product = products[i];
 
                     let productName = product[1];     // Product Name
@@ -39,7 +39,7 @@ $(document).ready(function () {
                             </option>
                         `);
                     }
-                });
+                }
             },
             error: function (err) {
                 console.log("Error loading products", err);
