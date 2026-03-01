@@ -3,6 +3,20 @@ let carts = [];
 
 $(document).ready(function () {
 
+    $("#nav-logout").click(function(e) {
+        e.preventDefault();  // Prevent default link behavior
+    
+        // Clear login/session info
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("user");
+    
+        // Optional: clear everything if you want
+        // localStorage.clear();
+    
+        // Redirect to login page
+        window.location.href = "index.html";
+    });
+
     toastr.options = {
         "closeButton": true,           // Show close button
         "progressBar": true,           // Show progress bar
