@@ -1,12 +1,21 @@
 $(document).ready(function () {
 
+    toastr.options = {
+        "closeButton": true,           // Show close button
+        "progressBar": true,           // Show progress bar
+        "positionClass": "toast-bottom-left", // Bottom left corner
+        "timeOut": "3000",             // Auto hide after 3s
+        "extendedTimeOut": "1000",
+        "preventDuplicates": true
+    };
+
     $("#btn-login").click(function () {
 
         let username = $("#inp-username").val().trim();
         let password = $("#inp-password").val().trim();
 
         if (!username || !password) {
-            alert("Please enter username and password");
+            toastr.error("Please enter username and password");
             return;
         }
 
@@ -30,7 +39,7 @@ $(document).ready(function () {
                     window.location.href = "pos.html"; // redirect to main menu
 
                 } else {
-                    alert(response.message || "Invalid username or password");
+                    toastr.error(response.message || "Invalid username or password");
                 }
 
             },
