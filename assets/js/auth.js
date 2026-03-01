@@ -19,11 +19,15 @@ $(document).ready(function () {
             return;
         }
 
+        const btnLogin = $('#btn-login');
+        btnLogin.prop('disabled', true).text('Logging in...');
+
         $.ajax({
             url: API_URL,
             method: "GET",
             data: { action: "login", username: username, password: password },
             success: function (response) {
+
 
                 // Parse if string
                 if (typeof response === "string") {
@@ -33,6 +37,8 @@ $(document).ready(function () {
                 // Backend already validates user
                 if (response.success) {
 
+                    btnLogin.prop('disabled', false).text('Login');
+
                     localStorage.setItem("isLoggedIn", true);
                     localStorage.setItem("user", JSON.stringify(response.user));
 
@@ -40,10 +46,13 @@ $(document).ready(function () {
 
                 } else {
                     toastr.error(response.message || "Invalid username or password");
+                    btnLogin.prop('disabled', false).text('Login');
                 }
 
             },
             error: function (err) {
+                btnLogin.prop('disabled', false).text('Login');
+                
                 console.log("Login error:", err);
                 alert("Failed to connect to server");
             }
