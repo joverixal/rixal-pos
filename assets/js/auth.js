@@ -6,13 +6,17 @@ $(document).ready(function () {
 
     if (isLoggedIn === "true") {
 
+        // show loader before redirect
+        $loader.show();
+
         setTimeout(function () {
             window.location.href = "pos.html";
-        }, 800);
+        }, 300); // optional small delay for UX
 
     } else {
 
-        $loader.fadeOut(300);
+        // not logged in → no loader
+        // already hidden by default, no action needed
     }
 
     toastr.options = {
