@@ -52,7 +52,7 @@ $(document).ready(function () {
                     
                     $("#sel-products").append(`
                         <option value="${product.id}">
-                            ${product.name} - ₱${product.sellingPrice}
+                            ${product.name}
                         </option>
                     `);
                 }
