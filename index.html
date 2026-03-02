@@ -97,5 +97,13 @@
       </div>
     </div>
   </div>
+
+  <script>
+  // Redirect if not logged in
+  if (localStorage.getItem("isLoggedIn")) {
+      window.location.href = "pos.html";
+  }
+</script>
+  
 </body>
 </html>
