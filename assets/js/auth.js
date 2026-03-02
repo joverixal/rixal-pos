@@ -4,19 +4,16 @@ $(document).ready(function () {
 
     var isLoggedIn = localStorage.getItem("isLoggedIn");
 
+    if(isLoggedIn != "true"){
+        $loader.addClass('d-none');
+    }
+
     if (isLoggedIn === "true") {
-
-        // show loader before redirect
-        $loader.show();
-
         setTimeout(function () {
+            // show loader before redirect
+            $loader.addClass('d-none');
             window.location.href = "pos.html";
         }, 300); // optional small delay for UX
-
-    } else {
-
-        // not logged in → no loader
-        // already hidden by default, no action needed
     }
 
     toastr.options = {
