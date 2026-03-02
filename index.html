@@ -75,7 +75,14 @@
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100">
 
-  <div class="card login-card shadow-sm w-100">
+  <div class="card login-card shadow-sm w-100 position-relative">
+    <!-- Loading Overlay -->
+    <div id="login-loading"
+         class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center bg-white"
+         style="z-index:10;">
+      <div class="spinner-border text-primary" role="status"></div>
+    </div>
+      
     <div class="card-body">
       <h4 class="text-center mb-4">Rixal-POS</h4>
 
@@ -97,13 +104,6 @@
       </div>
     </div>
   </div>
-
-  <script>
-  // Redirect if not logged in
-  if (localStorage.getItem("isLoggedIn")) {
-      window.location.href = "pos.html";
-  }
-</script>
   
 </body>
 </html>
