@@ -186,7 +186,7 @@ $(document).ready(function () {
             const itemHtml = `
                 <div class="d-flex justify-content-between align-items-center mb-2 border p-2 rounded">
                     <div>
-                        <strong>Product Name: ${item.name}</strong><br>
+                        <strong>${item.name}</strong><br>
                         Qty: ${item.quantity} x ₱${item.sellingPrice} = ₱${item.totalAmount}
                     </div>
                     <button class="btn btn-sm btn-danger btn-remove" data-index="${index}">
