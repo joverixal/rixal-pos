@@ -90,12 +90,12 @@ $(document).ready(function () {
     });
 
     $("#btn-increase").click(function() {
-        let qty = parseInt($("#inp-quantity").val()) || 1;
+        let qty = parseFloat($("#inp-quantity").val()) || 1;
         $("#inp-quantity").val(qty + 1);
     });
     
     $("#btn-decrease").click(function() {
-        let qty = parseInt($("#inp-quantity").val()) || 1;
+        let qty = parseFloat($("#inp-quantity").val()) || 1;
         if (qty > 1) $("#inp-quantity").val(qty - 1);
     });
 
@@ -105,7 +105,7 @@ $(document).ready(function () {
         const profit = $("#inp-profit").val();
         const name = $("#lbl-item-title").text();
         const stockOnHand = $("#inp-stock-on-hand").val();
-        const quantity = parseInt($('#inp-quantity').val()) || 0
+        const quantity = parseFloat($('#inp-quantity').val()) || 0
         const sellingPrice = parseFloat($("#inp-selling-price").val());
         const totalAmount = quantity * sellingPrice;
 
