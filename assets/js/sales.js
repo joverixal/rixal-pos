@@ -137,12 +137,10 @@ $(document).ready(function () {
             const paymentItemHtml = `
                 <div class="d-flex justify-content-between align-items-center mb-2 border p-2 rounded">
                     <div>
-                        ${createdAt}: <strong>${paymentItem.productName}</strong><br>
+                        <span class="badge bg-info text-dark">${createdAt}</span> 
+                        <strong>${paymentItem.productName}</strong><br>
                         Qty: ${paymentItem.quantity.toFixed(2)} x ₱${paymentItem.sellingPrice.toFixed(2)} = ₱${paymentItem.totalAmount.toFixed(2)}
                     </div>
-                    <button class="btn btn-sm btn-danger btn-remove" data-index="${index}">
-                      <i class="bi bi-trash"></i>
-                    </button>
                 </div>
             `;
     
@@ -156,6 +154,7 @@ $(document).ready(function () {
         $("#inp-total-amount").val(`₱${totalAmount.toFixed(2)}`);
     }       
 });
+
 
 
 
