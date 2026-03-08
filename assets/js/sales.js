@@ -33,9 +33,20 @@ $(document).ready(function () {
         return;
       }
 
-     loadPaymentItems(startDate, endDate);
+    $("#btn-filter").prop('disabled', true);
+
+     loadPaymentItems(getFormattedDate(startDate), getFormattedDate(endDate));
   
     });
+
+    // Check if there's a value
+    function getFormattedDate(dateVal) {
+        // Split the string into parts [yyyy, MM, dd]
+        var parts = dateVal.split('-');
+        // Rearrange to MM/dd/yyyy
+        var formattedDate = parts[1] + '/' + parts[2] + '/' + parts[0];
+        return formattedDate;
+    }
 
     function loadPaymentItems(startDate, endDate) {
 
@@ -55,10 +66,13 @@ $(document).ready(function () {
 
                 const paymentItems = response.paymentItems;
                 buildPaymentItemsHTML(paymentItems);
+
+                $("#btn-filter").prop('disabled', false);
             },
             error: function (err) {
                 console.log("Error payment items", err);
                 alert("Failed to load payment items");
+                $("#btn-filter").prop('disabled', false);
             }
         });
     }
@@ -88,6 +102,7 @@ $(document).ready(function () {
         $("#inp-total-quantity").val(totalQuantity);
     }       
 });
+
 
 
 
