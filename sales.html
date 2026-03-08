@@ -115,40 +115,57 @@
 
   <!-- Totals -->
 
-  <div class="form-floating mb-2">
-    <input type="number" id="inp-total-unit-price"
-           class="form-control total-field"
-           readonly disabled>
-    <label>Total Unit Price</label>
-  </div>
+  <!-- Totals -->
 
-  <div class="form-floating mb-2">
-    <input type="number" id="inp-total-selling-price"
-           class="form-control total-field"
-           readonly disabled>
-    <label>Total Selling Price</label>
-  </div>
-
-  <div class="form-floating mb-2">
-    <input type="number" id="inp-total-profit"
-           class="form-control total-field"
-           readonly disabled>
-    <label>Total Profit</label>
-  </div>
-
-  <div class="form-floating mb-2">
-    <input type="number" id="inp-total-quantity"
-           class="form-control total-field"
-           readonly disabled>
-    <label>Total Quantity</label>
-  </div>
-
-  <div class="form-floating mb-3">
-    <input type="number" id="inp-total-amount"
-           class="form-control total-field text-danger"
-           style="font-size:1.4rem;"
-           readonly disabled>
-    <label>Total Amount</label>
+  <div class="row g-2 mb-3">
+  
+    <div class="col-6">
+      <div class="form-floating">
+        <input type="number" id="inp-total-unit-price"
+               class="form-control total-field"
+               readonly disabled>
+        <label>Total Unit Price</label>
+      </div>
+    </div>
+  
+    <div class="col-6">
+      <div class="form-floating">
+        <input type="number" id="inp-total-selling-price"
+               class="form-control total-field"
+               readonly disabled>
+        <label>Total Selling Price</label>
+      </div>
+    </div>
+  
+    <div class="col-6">
+      <div class="form-floating">
+        <input type="number" id="inp-total-profit"
+               class="form-control total-field"
+               readonly disabled>
+        <label>Total Profit</label>
+      </div>
+    </div>
+  
+    <div class="col-6">
+      <div class="form-floating">
+        <input type="number" id="inp-total-quantity"
+               class="form-control total-field"
+               readonly disabled>
+        <label>Total Quantity</label>
+      </div>
+    </div>
+  
+    <div class="col-12">
+      <div class="form-floating">
+        <input type="number"
+               id="inp-total-amount"
+               class="form-control total-field text-danger fw-bold"
+               style="font-size:1.4rem;"
+               readonly disabled>
+        <label>Total Amount</label>
+      </div>
+    </div>
+  
   </div>
 
   <!-- Sales List -->
@@ -216,4 +233,5 @@ if(path==="sales.html") $("#nav-sales").addClass("active");
 
 </body>
 </html>
+
 
