@@ -22,13 +22,13 @@ $(document).ready(function () {
     };   
 
     $("#btn-filter").click(function() {
-      const startDate = $('#inp-end-date').val();
+      const startDate = $('#inp-start-date').val();
       const endDate = $('#inp-end-date').val();
       if(!isValidDate(startDate)){
         toastr.error("Input valid start date!");
         return;
       }
-      if(!isValidDate(endDateIsValid)){
+      if(!isValidDate(endDate)){
         toastr.error("Input valid end date!");
         return;
       }
@@ -103,6 +103,7 @@ $(document).ready(function () {
         $("#inp-total-quantity").val(totalQuantity);
     }       
 });
+
 
 
 
