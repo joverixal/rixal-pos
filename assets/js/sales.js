@@ -138,7 +138,7 @@ $(document).ready(function () {
                 <div class="d-flex justify-content-between align-items-center mb-2 border p-2 rounded">
                     <div>
                         ${createdAt}: <strong>${paymentItem.productName}</strong><br>
-                        Qty: ${paymentItem.quantity} x ₱${paymentItem.sellingPrice} = ₱${paymentItem.totalAmount}
+                        Qty: ${paymentItem.quantity.toFixed(2)} x ₱${paymentItem.sellingPrice.toFixed(2)} = ₱${paymentItem.totalAmount.toFixed(2)}
                     </div>
                     <button class="btn btn-sm btn-danger btn-remove" data-index="${index}">
                       <i class="bi bi-trash"></i>
@@ -149,13 +149,14 @@ $(document).ready(function () {
             $("#div-payment-items").append(paymentItemHtml);
         });
     
-        $("#inp-total-unit-price").val($`₱${totalUnitPrice.toFixed(2)}`);
-        $("#inp-total-selling-price").val($`₱${totalSellingPrice.toFixed(2)}`);
-        $("#inp-total-profit").val($`₱${totalProfit.toFixed(2)}`);
+        $("#inp-total-unit-price").val(`₱${totalUnitPrice.toFixed(2)}`);
+        $("#inp-total-selling-price").val(`₱${totalSellingPrice.toFixed(2)}`);
+        $("#inp-total-profit").val(`₱${totalProfit.toFixed(2)}`);
         $("#inp-total-quantity").val(totalQuantity.toFixed(2));
-        $("#inp-total-amount").val($`₱${totalAmount.toFixed(2)}`);
+        $("#inp-total-amount").val(`₱${totalAmount.toFixed(2)}`);
     }       
 });
+
 
 
 
