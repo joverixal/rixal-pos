@@ -37,20 +37,27 @@ $(document).ready(function () {
   
     });
 
-    function isValidDate(dateStr) {
-        // Regex for MM/DD/YYYY
-        const regex = /^(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/\d{4}$/;
-        if (!regex.test(dateStr)) return false;
-    
-        // Further validate actual date (handles 02/30, 04/31, etc.)
-        const parts = dateStr.split("/");
-        const month = parseInt(parts[0], 10);
-        const day = parseInt(parts[1], 10);
-        const year = parseInt(parts[2], 10);
-    
-        const dt = new Date(year, month - 1, day);
-        return dt.getFullYear() === year && dt.getMonth() === month - 1 && dt.getDate() === day;
-    }
+   function isValidDate(dateStr) {
+    // Regex for MM/DD/YYYY
+    const regex = /^(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/\d{4}$/;
+    if (!regex.test(dateStr)) return false;
+
+    // Parse components
+    const [monthStr, dayStr, yearStr] = dateStr.split("/");
+    const month = parseInt(monthStr, 10);
+    const day = parseInt(dayStr, 10);
+    const year = parseInt(yearStr, 10);
+
+    // Create date object
+    const dt = new Date(year, month - 1, day);
+
+    // Validate each component
+    if (dt.getFullYear() !== year) return false;
+    if (dt.getMonth() !== month - 1) return false;
+    if (dt.getDate() !== day) return false;
+
+    return true;
+}
 
     function loadPaymentItems(startDate, endDate) {
 
@@ -103,6 +110,7 @@ $(document).ready(function () {
         $("#inp-total-quantity").val(totalQuantity);
     }       
 });
+
 
 
 
