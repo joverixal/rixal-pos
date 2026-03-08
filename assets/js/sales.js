@@ -49,18 +49,31 @@ $(document).ready(function () {
     $("#btn-filter").click(function() {
       const startDate = $('#inp-end-date').val();
       const endDate = $('#inp-end-date').val();
-      const startDateIsValid = moment(startDate, "MM/DD/YYYY", true).isValid();
-      const endDateIsValid = moment(endDate, "MM/DD/YYYY", true).isValid();
-      if(startDateIsValid){
+      if(!isValidDate(startDate)){
         toastr.error("Input valid start date!");
         return;
       }
-      if(endDateIsValid){
+      if(!isValidDate(endDateIsValid)){
         toastr.error("Input valid end date!");
         return;
       }
   
     });
+
+    function isValidDate(dateStr) {
+        // Regex for MM/DD/YYYY
+        const regex = /^(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/\d{4}$/;
+        if (!regex.test(dateStr)) return false;
+    
+        // Further validate actual date (handles 02/30, 04/31, etc.)
+        const parts = dateStr.split("/");
+        const month = parseInt(parts[0], 10);
+        const day = parseInt(parts[1], 10);
+        const year = parseInt(parts[2], 10);
+    
+        const dt = new Date(year, month - 1, day);
+        return dt.getFullYear() === year && dt.getMonth() === month - 1 && dt.getDate() === day;
+    }
 
     function buildPaymentItemsHTML(paymentItems) {
         $("#div-payment-items").empty();
@@ -87,5 +100,6 @@ $(document).ready(function () {
         $("#inp-total-quantity").val(totalQuantity);
     }       
 });
+
 
 
