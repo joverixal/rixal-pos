@@ -31,10 +31,7 @@ $(document).ready(function () {
       if(endDate == ''){
         toastr.error("Input valid end date!");
         return;
-      }
-
-    $("#btn-filter").prop('disabled', true);
-    $("#btn-filter").html('<i class="fa fa-spinner fa-spin"></i>');
+      }    
      loadPaymentItems(getFormattedDate(startDate), getFormattedDate(endDate));
   
     });
@@ -50,6 +47,13 @@ $(document).ready(function () {
 
     function loadPaymentItems(startDate, endDate) {
 
+        var btnFilter = $('#btn-filter');
+        var originalHtml = btnFilter.html();
+
+        // Disable and show spinner
+        btnFilter.prop('disabled', true);
+        btnFilter.html('<i class="bi bi-arrow-clockwise spin"></i>'); // Bootstrap spinner icon
+        
         $.ajax({
             url: API_URL,
             method: "GET",
@@ -67,12 +71,16 @@ $(document).ready(function () {
                 const paymentItems = response.paymentItems;
                 buildPaymentItemsHTML(paymentItems);
 
-                $("#btn-filter").prop('disabled', false);
+                // Restore button
+                btnFilter.prop('disabled', false);
+                btnFilter.html(originalHtml);
             },
             error: function (err) {
                 console.log("Error payment items", err);
                 alert("Failed to load payment items");
-                $("#btn-filter").prop('disabled', false);
+                // Restore button
+                btnFilter.prop('disabled', false);
+                btnFilter.html(originalHtml);
             }
         });
     }
@@ -102,6 +110,7 @@ $(document).ready(function () {
         $("#inp-total-quantity").val(totalQuantity);
     }       
 });
+
 
 
 
