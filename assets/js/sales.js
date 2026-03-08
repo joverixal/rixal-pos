@@ -72,6 +72,11 @@ $(document).ready(function () {
         return formatted; // "03/03/2026 09:40AM"
     }
 
+    function getFormattedNumber(number){
+        let formatted = Number(number.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+         return formatted; // "1,234,567.89"
+    }
+
     function loadPaymentItems(startDate, endDate) {
 
         $("#inp-total-unit-price").val('₱0.00');
@@ -139,7 +144,7 @@ $(document).ready(function () {
                     <div>
                         <span class="badge bg-info text-dark">${createdAt}</span> 
                         <strong>${paymentItem.productName}</strong><br>
-                        Qty: ${paymentItem.quantity.toFixed(2)} x ₱${paymentItem.sellingPrice.toFixed(2)} = ₱${paymentItem.totalAmount.toFixed(2)}
+                        Qty: ${getFormattedNumber(paymentItem.quantity)} x ₱${getFormattedNumber(paymentItem.sellingPrice)} = ₱${getFormattedNumber(paymentItem.totalAmount)}
                     </div>
                 </div>
                 `;
@@ -147,13 +152,14 @@ $(document).ready(function () {
             $("#div-payment-items").append(paymentItemHtml);
         });
     
-        $("#inp-total-unit-price").val(`₱${totalUnitPrice.toFixed(2)}`);
-        $("#inp-total-selling-price").val(`₱${totalSellingPrice.toFixed(2)}`);
-        $("#inp-total-profit").val(`₱${totalProfit.toFixed(2)}`);
-        $("#inp-total-quantity").val(totalQuantity.toFixed(2));
-        $("#inp-total-amount").val(`₱${totalAmount.toFixed(2)}`);
+        $("#inp-total-unit-price").val(`₱${getFormattedNumber(totalUnitPrice)}`);
+        $("#inp-total-selling-price").val(`₱${getFormattedNumber(totalSellingPrice}`);
+        $("#inp-total-profit").val(`₱${getFormattedNumber(totalProfit)}`);
+        $("#inp-total-quantity").val(getFormattedNumber(totalQuantity));
+        $("#inp-total-amount").val(`₱${getFormattedNumber(totalAmount)}`);
     }       
 });
+
 
 
 
