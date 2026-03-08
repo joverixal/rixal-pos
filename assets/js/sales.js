@@ -153,12 +153,13 @@ $(document).ready(function () {
         });
     
         $("#inp-total-unit-price").val(`₱${getFormattedNumber(totalUnitPrice)}`);
-        $("#inp-total-selling-price").val(`₱${getFormattedNumber(totalSellingPrice}`);
+        $("#inp-total-selling-price").val(`₱${getFormattedNumber(totalSellingPrice)}`);
         $("#inp-total-profit").val(`₱${getFormattedNumber(totalProfit)}`);
         $("#inp-total-quantity").val(getFormattedNumber(totalQuantity));
         $("#inp-total-amount").val(`₱${getFormattedNumber(totalAmount)}`);
     }       
 });
+
 
 
 
