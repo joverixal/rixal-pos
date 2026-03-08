@@ -47,8 +47,8 @@ $(document).ready(function () {
     }
 
     $("#btn-filter").click(function() {
-      conts startDate = $('#inp-end-date').val();
-      conts endDate = $('#inp-end-date').val();
+      const startDate = $('#inp-end-date').val();
+      const endDate = $('#inp-end-date').val();
       if(moment(startDate, "MM/DD/YYYY", true).isValid()){
         toastr.error("Input valid start date!");
         return;
@@ -85,3 +85,4 @@ $(document).ready(function () {
         $("#inp-total-quantity").val(totalQuantity);
     }       
 });
+
