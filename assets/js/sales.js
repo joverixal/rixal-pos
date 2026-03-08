@@ -49,11 +49,13 @@ $(document).ready(function () {
     $("#btn-filter").click(function() {
       const startDate = $('#inp-end-date').val();
       const endDate = $('#inp-end-date').val();
-      if(moment(startDate, "MM/DD/YYYY", true).isValid()){
+      const startDateIsValid = moment(startDate, "MM/DD/YYYY", true).isValid();
+      const endDateIsValid = moment(endDate, "MM/DD/YYYY", true).isValid();
+      if(startDateIsValid){
         toastr.error("Input valid start date!");
         return;
       }
-      if(moment(endDate, "MM/DD/YYYY", true).isValid()){
+      if(endDateIsValid){
         toastr.error("Input valid end date!");
         return;
       }
@@ -85,4 +87,5 @@ $(document).ready(function () {
         $("#inp-total-quantity").val(totalQuantity);
     }       
 });
+
 
