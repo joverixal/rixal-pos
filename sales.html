@@ -70,6 +70,11 @@
       font-size:1.5rem;
       margin-bottom:0.2rem;
     }
+
+    #nav-logo img {
+      display: block;
+      margin: 0 auto;
+    }
   </style>
 
   <!-- jQuery -->
@@ -172,11 +177,9 @@
 
 </div>
 
-
-<!-- Bottom Navigation -->
+<!-- Bottom navigation menu with plain logo -->
 <nav class="navbar fixed-bottom bg-white border-top">
-  <div class="container d-flex justify-content-around bottom-nav">
-
+  <div class="container d-flex justify-content-around bottom-nav align-items-center">
     <a href="pos.html" class="text-decoration-none" id="nav-pos">
       <i class="bi bi-cash-stack"></i>
       POS
@@ -187,6 +190,11 @@
       Products
     </a>
 
+    <!-- Plain logo, not a link -->
+    <div id="nav-logo">
+      <img src="assets/images/logo.png" alt="Logo" style="height:40px; width:auto;">
+    </div>
+
     <a href="sales.html" class="text-decoration-none" id="nav-sales">
       <i class="bi bi-receipt"></i>
       Sales
@@ -196,7 +204,6 @@
       <i class="bi bi-box-arrow-right"></i>
       Logout
     </a>
-
   </div>
 </nav>
 
@@ -218,6 +225,7 @@ if(path==="sales.html") $("#nav-sales").addClass("active");
 
 </body>
 </html>
+
 
 
 
