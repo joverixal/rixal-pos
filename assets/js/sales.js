@@ -108,9 +108,10 @@ $(document).ready(function () {
             $("#div-payment-items").append(paymentItemHtml);
         });
     
-        $("#inp-total-quantity").val(totalQuantity);
+        $("#inp-total-quantity").val(totalQuantity.toFixed(2));
     }       
 });
+
 
 
 
