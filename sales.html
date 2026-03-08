@@ -42,15 +42,6 @@
       font-weight:700;
     }
     
-    /* Sales list */
-    #div-sales-items{
-      display:flex;
-      flex-direction:column;
-      gap:0.5rem;
-      max-height:300px;
-      overflow-y:auto;
-    }
-    
     #div-sales-items::-webkit-scrollbar{
       width:6px;
     }
@@ -80,8 +71,22 @@
       margin-bottom:0.2rem;
     }
 
-    body > .container {
-      padding-bottom: 300px; /* equal or slightly bigger than navbar height */
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%; /* full viewport */
+      padding-bottom: 0; /* optional */
+    }
+    
+    #div-payment-items {
+      flex: 1;             /* take remaining space */
+      overflow-y: auto;    /* scroll only this div */
+      margin-bottom: 1rem; /* optional spacing from footer */
     }
 
   </style>
@@ -188,7 +193,6 @@
 
 
 <!-- Bottom Navigation -->
-
 <nav class="navbar fixed-bottom bg-white border-top">
   <div class="container d-flex justify-content-around bottom-nav">
 
@@ -233,6 +237,7 @@ if(path==="sales.html") $("#nav-sales").addClass("active");
 
 </body>
 </html>
+
 
 
 
