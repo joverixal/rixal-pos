@@ -34,7 +34,7 @@ $(document).ready(function () {
       }
 
     $("#btn-filter").prop('disabled', true);
-
+    $("#btn-filter").html('<i class="fa fa-spinner fa-spin"></i>');
      loadPaymentItems(getFormattedDate(startDate), getFormattedDate(endDate));
   
     });
@@ -102,6 +102,7 @@ $(document).ready(function () {
         $("#inp-total-quantity").val(totalQuantity);
     }       
 });
+
 
 
 
