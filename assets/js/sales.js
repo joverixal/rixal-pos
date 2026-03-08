@@ -19,32 +19,7 @@ $(document).ready(function () {
         "timeOut": "3000",             // Auto hide after 3s
         "extendedTimeOut": "1000",
         "preventDuplicates": true
-    };
-
-    function loadPaymentItems() {
-
-        $.ajax({
-            url: API_URL,
-            method: "GET",
-            data: {
-                action: "getSales"
-            },
-            success: function (response) {
-
-                if (typeof response === "string") {
-                    response = JSON.parse(response);
-                }
-
-                const paymentItems = response.paymentItems;
-                buildPaymentItemsHTML(paymentItems);
-            },
-            error: function (err) {
-                console.log("Error payment items", err);
-                alert("Failed to load payment items");
-            }
-        });
-
-    }
+    };   
 
     $("#btn-filter").click(function() {
       const startDate = $('#inp-end-date').val();
@@ -57,6 +32,8 @@ $(document).ready(function () {
         toastr.error("Input valid end date!");
         return;
       }
+
+     loadPaymentItems(startDate, endDate);
   
     });
 
@@ -73,6 +50,32 @@ $(document).ready(function () {
     
         const dt = new Date(year, month - 1, day);
         return dt.getFullYear() === year && dt.getMonth() === month - 1 && dt.getDate() === day;
+    }
+
+    function loadPaymentItems(startDate, endDate) {
+
+        $.ajax({
+            url: API_URL,
+            method: "GET",
+            data: {
+                action: "getSales",
+                startDate: startDate,
+                endDate: endDate,
+            },
+            success: function (response) {
+
+                if (typeof response === "string") {
+                    response = JSON.parse(response);
+                }
+
+                const paymentItems = response.paymentItems;
+                buildPaymentItemsHTML(paymentItems);
+            },
+            error: function (err) {
+                console.log("Error payment items", err);
+                alert("Failed to load payment items");
+            }
+        });
     }
 
     function buildPaymentItemsHTML(paymentItems) {
@@ -100,6 +103,7 @@ $(document).ready(function () {
         $("#inp-total-quantity").val(totalQuantity);
     }       
 });
+
 
 
 
