@@ -47,6 +47,8 @@ $(document).ready(function () {
 
     function loadPaymentItems(startDate, endDate) {
 
+        $("#div-payment-items").empty();
+        
         var btnFilter = $('#btn-filter');
         var originalHtml = btnFilter.html();
 
@@ -85,8 +87,7 @@ $(document).ready(function () {
         });
     }
 
-    function buildPaymentItemsHTML(paymentItems) {
-        $("#div-payment-items").empty();
+    function buildPaymentItemsHTML(paymentItems) {        
         let totalQuantity = 0;
     
         paymentItems.forEach((paymentItem, index) => {
@@ -110,6 +111,7 @@ $(document).ready(function () {
         $("#inp-total-quantity").val(totalQuantity);
     }       
 });
+
 
 
 
