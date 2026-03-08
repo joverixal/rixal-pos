@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <!-- Toastr -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+
+  <style>
+
+:root{
+  --primary:#E41200;
+  --secondary:#FFA600;
+}
+
+/* Inputs */
+.form-control:focus{
+  border-color:var(--secondary);
+  box-shadow:0 0 0 0.2rem rgba(255,166,0,0.25);
+}
+
+/* Filter button */
+#btn-filter{
+  background:var(--secondary);
+  border:none;
+  font-weight:600;
+}
+
+#btn-filter:hover{
+  background:#e69500;
+}
+
+/* Totals */
+.total-field{
+  font-weight:700;
+}
+
+/* Sales list */
+#div-sales-items{
+  display:flex;
+  flex-direction:column;
+  gap:0.5rem;
+  max-height:300px;
+  overflow-y:auto;
+}
+
+#div-sales-items::-webkit-scrollbar{
+  width:6px;
+}
+
+#div-sales-items::-webkit-scrollbar-thumb{
+  background:rgba(0,0,0,0.2);
+  border-radius:3px;
+}
+
+/* Bottom nav */
+.bottom-nav a{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:0.5rem;
+  color:#6c757d;
+  font-size:0.85rem;
+}
+
+.bottom-nav a.active{
+  color:var(--primary);
+}
+
+.bottom-nav i{
+  font-size:1.5rem;
+  margin-bottom:0.2rem;
+}
+
+  </style>
+
+</head>
+
+<body>
+
+<div class="container py-3 mb-5">
+
+  <!-- Date Filter -->
+  <div class="row g-2 mb-3">
+
+    <div class="col">
+      <label class="form-label">Start Date</label>
+      <input type="date" id="inp-start-date" class="form-control">
+    </div>
+
+    <div class="col">
+      <label class="form-label">End Date</label>
+      <input type="date" id="inp-end-date" class="form-control">
+    </div>
+
+    <div class="col-12 d-grid mt-2">
+      <button id="btn-filter" class="btn">
+        <i class="bi bi-funnel"></i> Filter
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Totals -->
+
+  <div class="form-floating mb-2">
+    <input type="number" id="inp-total-unit-price"
+           class="form-control total-field"
+           readonly disabled>
+    <label>Total Unit Price</label>
+  </div>
+
+  <div class="form-floating mb-2">
+    <input type="number" id="inp-total-selling-price"
+           class="form-control total-field"
+           readonly disabled>
+    <label>Total Selling Price</label>
+  </div>
+
+  <div class="form-floating mb-2">
+    <input type="number" id="inp-total-profit"
+           class="form-control total-field"
+           readonly disabled>
+    <label>Total Profit</label>
+  </div>
+
+  <div class="form-floating mb-2">
+    <input type="number" id="inp-total-quantity"
+           class="form-control total-field"
+           readonly disabled>
+    <label>Total Quantity</label>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input type="number" id="inp-total-amount"
+           class="form-control total-field text-danger"
+           style="font-size:1.4rem;"
+           readonly disabled>
+    <label>Total Amount</label>
+  </div>
+
+  <!-- Sales List -->
+
+  <h6 class="fw-bold mb-2">Items</h6>
+
+  <div id="div-sales-items"></div>
+
+</div>
+
+
+<!-- Bottom Navigation -->
+
+<nav class="navbar fixed-bottom bg-white border-top">
+  <div class="container d-flex justify-content-around bottom-nav">
+
+    <a href="pos.html" class="text-decoration-none" id="nav-pos">
+      <i class="bi bi-cash-stack"></i>
+      POS
+    </a>
+
+    <a href="products.html" class="text-decoration-none" id="nav-products">
+      <i class="bi bi-box-seam"></i>
+      Products
+    </a>
+
+    <a href="sales.html" class="text-decoration-none" id="nav-sales">
+      <i class="bi bi-receipt"></i>
+      Sales
+    </a>
+
+    <a href="#" class="text-decoration-none" id="nav-logout">
+      <i class="bi bi-box-arrow-right"></i>
+      Logout
+    </a>
+
+  </div>
+</nav>
+
+
+<!-- Scripts -->
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/sales.js"></script>
+
+<script>
+
+if (!localStorage.getItem("isLoggedIn")) {
+  window.location.href="index.html";
+}
+
+/* highlight nav */
+
+const path = window.location.pathname.split("/").pop();
+
+if(path==="pos.html") $("#nav-pos").addClass("active");
+if(path==="products.html") $("#nav-products").addClass("active");
+if(path==="sales.html") $("#nav-sales").addClass("active");
+
+</script>
+
+</body>
+</html>
