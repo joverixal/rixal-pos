@@ -48,7 +48,7 @@ $(document).ready(function () {
     function loadPaymentItems(startDate, endDate) {
 
         $("#inp-total-unit-price").val('');
-        $("#inp-total-selling-price").vval('');
+        $("#inp-total-selling-price").val('');
         $("#inp-total-profit").val('');
         $("#inp-total-quantity").val('');
         $("#inp-total-amount").val('');
@@ -128,6 +128,7 @@ $(document).ready(function () {
         $("#inp-total-amount").val($`₱{totalAmount.toFixed(2)}`);
     }       
 });
+
 
 
 
