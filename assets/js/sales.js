@@ -52,7 +52,7 @@ $(document).ready(function () {
 
         // Disable and show spinner
         btnFilter.prop('disabled', true);
-        btnFilter.html('<i class="bi bi-arrow-clockwise spin"></i>'); // Bootstrap spinner icon
+        btnFilter.html(`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>`);
         
         $.ajax({
             url: API_URL,
@@ -110,6 +110,7 @@ $(document).ready(function () {
         $("#inp-total-quantity").val(totalQuantity);
     }       
 });
+
 
 
 
