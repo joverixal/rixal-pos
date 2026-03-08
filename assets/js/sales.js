@@ -74,11 +74,11 @@ $(document).ready(function () {
 
     function loadPaymentItems(startDate, endDate) {
 
-        $("#inp-total-unit-price").val('');
-        $("#inp-total-selling-price").val('');
-        $("#inp-total-profit").val('');
-        $("#inp-total-quantity").val('');
-        $("#inp-total-amount").val('');
+        $("#inp-total-unit-price").val('₱0.00');
+        $("#inp-total-selling-price").val('₱0.00');
+        $("#inp-total-profit").val('₱0.00');
+        $("#inp-total-quantity").val('0.00');
+        $("#inp-total-amount").val('₱0.00');
         $("#div-payment-items").empty();
         
         var btnFilter = $('#btn-filter');
@@ -149,13 +149,14 @@ $(document).ready(function () {
             $("#div-payment-items").append(paymentItemHtml);
         });
     
-        $("#inp-total-unit-price").val($`₱{totalUnitPrice.toFixed(2)}`);
-        $("#inp-total-selling-price").val($`₱{totalSellingPrice.toFixed(2)}`);
-        $("#inp-total-profit").val($`₱{totalProfit.toFixed(2)}`);
+        $("#inp-total-unit-price").val($`₱${totalUnitPrice.toFixed(2)}`);
+        $("#inp-total-selling-price").val($`₱${totalSellingPrice.toFixed(2)}`);
+        $("#inp-total-profit").val($`₱${totalProfit.toFixed(2)}`);
         $("#inp-total-quantity").val(totalQuantity.toFixed(2));
-        $("#inp-total-amount").val($`₱{totalAmount.toFixed(2)}`);
+        $("#inp-total-amount").val($`₱${totalAmount.toFixed(2)}`);
     }       
 });
+
 
 
 
