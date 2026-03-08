@@ -141,18 +141,19 @@ $(document).ready(function () {
                         <span class="badge rounded-pill bg-info text-dark ms-2 small">${createdAt}</span><br>
                         Qty: ${paymentItem.quantity.toFixed(2)} x ₱${paymentItem.sellingPrice.toFixed(2)} = ₱${paymentItem.totalAmount.toFixed(2)}
                     </div>
-                </div>
+                </div>`;
     
             $("#div-payment-items").append(paymentItemHtml);
         });
     
-        $("#inp-total-unit-price").val(${totalUnitPrice.toFixed(2)});
-        $("#inp-total-selling-price").val(${totalSellingPrice.toFixed(2)});
-        $("#inp-total-profit").val(${totalProfit.toFixed(2)});
+        $("#inp-total-unit-price").val(`₱${totalUnitPrice.toFixed(2)}`);
+        $("#inp-total-selling-price").val(`₱${totalSellingPrice.toFixed(2)}`);
+        $("#inp-total-profit").val(`₱${totalProfit.toFixed(2)}`);
         $("#inp-total-quantity").val(totalQuantity.toFixed(2));
-        $("#inp-total-amount").val(${totalAmount.toFixed(2)});
+        $("#inp-total-amount").val(`₱${totalAmount.toFixed(2)}`);
     }       
 });
+
 
 
 
