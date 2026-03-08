@@ -88,11 +88,19 @@ $(document).ready(function () {
     }
 
     function buildPaymentItemsHTML(paymentItems) {        
+        let totalUnitPrice = 0;
+        let totalSellingPrice = 0;
+        let totalProfit = 0;
         let totalQuantity = 0;
+        let totalAmount = 0;
     
         paymentItems.forEach((paymentItem, index) => {
+            totalUnitPrice += paymentItem.quantity * paymentItem.unitPrice
+            totalSellingPrice += paymentItem.quantity * paymentItem.sellingPrice
+            totalProfit += paymentItem.quantity * paymentItem.profit
             totalQuantity += paymentItem.quantity;
-    
+            totalAmount += paymentItem.totalAmount;
+            
             const paymentItemHtml = `
                 <div class="d-flex justify-content-between align-items-center mb-2 border p-2 rounded">
                     <div>
@@ -108,9 +116,14 @@ $(document).ready(function () {
             $("#div-payment-items").append(paymentItemHtml);
         });
     
+        $("#inp-total-unit-price").val(totalUnitPrice.toFixed(2));
+        $("#inp-total-selling-price").val(totalSellingPrice.toFixed(2));
+        $("#inp-total-profit").val(totalProfit.toFixed(2));
         $("#inp-total-quantity").val(totalQuantity.toFixed(2));
+        $("#inp-total-amount").val(totalAmount.toFixed(2));
     }       
 });
+
 
 
 
