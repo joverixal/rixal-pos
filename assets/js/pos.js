@@ -28,6 +28,12 @@ $(document).ready(function () {
 
     function loadProducts() {
 
+        var $select = $('#sel-products');
+
+        // Disable select and show loading text
+        $select.prop('disabled', true);
+        $select.html('<option value="">Loading...</option>');
+
         $.ajax({
             url: API_URL,
             method: "GET",
@@ -42,8 +48,8 @@ $(document).ready(function () {
 
                 products = response.products;
 
-                $("#sel-products").empty();
-                $("#sel-products").append(`<option value="">Select Item</option>`);
+                $select.empty();
+                $select.append(`<option value="">Select Item</option>`);
 
                 for(let i = 0; i < products.length; i++){
                     const product = products[i];
@@ -54,10 +60,13 @@ $(document).ready(function () {
                         </option>
                     `);
                 }
+
+                $select.prop('disabled', false);
             },
             error: function (err) {
                 console.log("Error loading products", err);
                 alert("Failed to load products");
+                $select.prop('disabled', false);
             }
         });
 
