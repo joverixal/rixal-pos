@@ -101,21 +101,19 @@
   <!-- Date Filter -->
   <div class="row g-2 mb-3 align-items-end">
   
-    <!-- Start Date -->
+    <!-- Start & End Date combined -->
     <div class="col">
-      <label class="form-label visually-hidden" for="inp-start-date">Start Date</label>
-      <input type="date" id="inp-start-date" class="form-control" placeholder="Start Date">
-    </div>
-  
-    <!-- End Date -->
-    <div class="col">
-      <label class="form-label visually-hidden" for="inp-end-date">End Date</label>
-      <input type="date" id="inp-end-date" class="form-control" placeholder="End Date">
+      <label class="form-label" for="inp-start-date">Date Range</label>
+      <div class="d-flex gap-2">
+        <input type="date" id="inp-start-date" class="form-control">
+        <span class="align-self-center">–</span>
+        <input type="date" id="inp-end-date" class="form-control">
+      </div>
     </div>
   
     <!-- Filter Button (icon only) -->
-    <div class="col-auto">
-      <button id="btn-filter" class="btn btn-secondary w-100" style="height:100%;">
+    <div class="col-auto d-flex align-items-end">
+      <button id="btn-filter" class="btn btn-secondary" style="height: 38px;">
         <i class="bi bi-funnel"></i>
       </button>
     </div>
@@ -231,6 +229,7 @@ if(path==="sales.html") $("#nav-sales").addClass("active");
 
 </body>
 </html>
+
 
 
 
