@@ -24,11 +24,11 @@ $(document).ready(function () {
     $("#btn-filter").click(function() {
       const startDate = $('#inp-start-date').val();
       const endDate = $('#inp-end-date').val();
-      if(isValidDate(startDate) == false){
+      if(startDate == ''){
         toastr.error("Input valid start date!");
         return;
       }
-      if(!isValidDate(endDate) == false){
+      if(endDate == ''){
         toastr.error("Input valid end date!");
         return;
       }
@@ -36,28 +36,6 @@ $(document).ready(function () {
      loadPaymentItems(startDate, endDate);
   
     });
-
-   function isValidDate(dateStr) {
-    // Regex for MM/DD/YYYY
-    const regex = /^(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/\d{4}$/;
-    if (!regex.test(dateStr)) return false;
-
-    // Parse components
-    const [monthStr, dayStr, yearStr] = dateStr.split("/");
-    const month = parseInt(monthStr, 10);
-    const day = parseInt(dayStr, 10);
-    const year = parseInt(yearStr, 10);
-
-    // Create date object
-    const dt = new Date(year, month - 1, day);
-
-    // Validate each component
-    if (dt.getFullYear() !== year) return false;
-    if (dt.getMonth() !== month - 1) return false;
-    if (dt.getDate() !== day) return false;
-
-    return true;
-}
 
     function loadPaymentItems(startDate, endDate) {
 
@@ -110,6 +88,7 @@ $(document).ready(function () {
         $("#inp-total-quantity").val(totalQuantity);
     }       
 });
+
 
 
 
