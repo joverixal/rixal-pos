@@ -73,8 +73,9 @@ $(document).ready(function () {
     }
 
     function getFormattedNumber(number){
-        let formatted = Number(number.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-         return formatted; // "1,234,567.89"
+        // keep as string, add commas
+        let formatted = number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return formatted; // "1,234,567.89"
     }
 
     function loadPaymentItems(startDate, endDate) {
@@ -159,6 +160,7 @@ $(document).ready(function () {
         $("#inp-total-amount").val(`₱${getFormattedNumber(totalAmount)}`);
     }       
 });
+
 
 
 
