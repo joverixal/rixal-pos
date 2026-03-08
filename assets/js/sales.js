@@ -45,6 +45,33 @@ $(document).ready(function () {
         return formattedDate;
     }
 
+    function getFormattedDateISO(isoDate){
+        // Convert to a Date object
+        var dateObj = new Date(isoDate);
+        
+        // Helper function to pad numbers
+        function pad(n) { return n < 10 ? '0' + n : n; }
+        
+        // Extract parts
+        var month = pad(dateObj.getMonth() + 1); // Months are 0-based
+        var day = pad(dateObj.getDate());
+        var year = dateObj.getFullYear();
+        
+        var hours = dateObj.getHours();
+        var minutes = pad(dateObj.getMinutes());
+        
+        // Convert 24h -> 12h format
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // 0 -> 12
+        hours = pad(hours);
+        
+        // Build formatted string
+        var formatted = month + '/' + day + '/' + year + ' ' + hours + ':' + minutes + ampm;
+        
+        return formatted; // "03/03/2026 09:40AM"
+    }
+
     function loadPaymentItems(startDate, endDate) {
 
         $("#inp-total-unit-price").val('');
@@ -105,11 +132,12 @@ $(document).ready(function () {
             totalProfit += paymentItem.quantity * paymentItem.profit
             totalQuantity += paymentItem.quantity;
             totalAmount += paymentItem.totalAmount;
+            const createdAt = getFormattedDateISO(paymentItem.createdAt);
             
             const paymentItemHtml = `
                 <div class="d-flex justify-content-between align-items-center mb-2 border p-2 rounded">
                     <div>
-                        <strong>${paymentItem.productName}</strong><br>
+                        ${createdAt}: <strong>${paymentItem.productName}</strong><br>
                         Qty: ${paymentItem.quantity} x ₱${paymentItem.sellingPrice} = ₱${paymentItem.totalAmount}
                     </div>
                     <button class="btn btn-sm btn-danger btn-remove" data-index="${index}">
@@ -128,6 +156,7 @@ $(document).ready(function () {
         $("#inp-total-amount").val($`₱{totalAmount.toFixed(2)}`);
     }       
 });
+
 
 
 
