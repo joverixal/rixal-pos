@@ -24,9 +24,10 @@
   <script src="assets/js/config.js"></script>
   <script src="assets/js/auth.js"></script>
 
-  <style>
+ <style>
   body {
     background-color: #f8f9fa;
+    padding: 20px; /* adds space around the card */
   }
 
   .login-card {
@@ -34,6 +35,7 @@
     border-radius: 1rem;
     padding: 2rem;
     border-top: 5px solid #E41200;
+    margin: 20px; /* extra margin around card */
   }
 
   .login-logo {
@@ -48,7 +50,7 @@
   }
 
   .login-btn {
-    background-color: #E41200 !important;
+    background-color: #FFA600 !important;
     color: #fff !important;
     border: none !important;
     font-weight: 600;
@@ -64,13 +66,15 @@
     margin-right: 0.5rem;
   }
 
+  /* Hover */
   .login-btn:hover {
-    background-color: #c10f00 !important;
+    background-color: #e69500 !important;
   }
 
+  /* Active */
   .login-btn:active,
   .login-btn:focus {
-    background-color: #a50c00 !important;
+    background-color: #cc8400 !important;
     transform: scale(0.97);
     box-shadow: none !important;
   }
@@ -84,6 +88,7 @@
     border-color: #FFA600;
     box-shadow: 0 0 0 0.2rem rgba(255,166,0,0.25);
   }
+</style>
 
 </style>
 </head>
@@ -92,8 +97,6 @@
   <div class="card-body text-center">
 
   <img src="assets/images/logo.png" class="login-logo" alt="Rixal POS Logo">
-
-  <h4 class="login-title mb-4">Rixal-POS</h4>
 
   <div class="form-floating mb-3">
     <input type="text" id="inp-username" class="form-control" placeholder="Username">
