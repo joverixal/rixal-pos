@@ -73,8 +73,8 @@ $(document).ready(function () {
             const paymentItemHtml = `
                 <div class="d-flex justify-content-between align-items-center mb-2 border p-2 rounded">
                     <div>
-                        <strong>${item.productName}</strong><br>
-                        Qty: ${item.quantity} x ₱${item.sellingPrice} = ₱${item.totalAmount}
+                        <strong>${paymentItem.productName}</strong><br>
+                        Qty: ${paymentItem.quantity} x ₱${paymentItem.sellingPrice} = ₱${paymentItem.totalAmount}
                     </div>
                     <button class="btn btn-sm btn-danger btn-remove" data-index="${index}">
                       <i class="bi bi-trash"></i>
@@ -88,6 +88,7 @@ $(document).ready(function () {
         $("#inp-total-quantity").val(totalQuantity);
     }       
 });
+
 
 
 
