@@ -99,24 +99,27 @@
 <div class="container py-3 mb-5">
 
   <!-- Date Filter -->
-  <div class="row g-2 mb-3">
-
+  <div class="row g-2 mb-3 align-items-end">
+  
+    <!-- Start Date -->
     <div class="col">
-      <label class="form-label">Start Date</label>
-      <input type="date" id="inp-start-date" class="form-control">
+      <label class="form-label visually-hidden" for="inp-start-date">Start Date</label>
+      <input type="date" id="inp-start-date" class="form-control" placeholder="Start Date">
     </div>
-
+  
+    <!-- End Date -->
     <div class="col">
-      <label class="form-label">End Date</label>
-      <input type="date" id="inp-end-date" class="form-control">
+      <label class="form-label visually-hidden" for="inp-end-date">End Date</label>
+      <input type="date" id="inp-end-date" class="form-control" placeholder="End Date">
     </div>
-
-    <div class="col-12 d-grid mt-2">
-      <button id="btn-filter" class="btn">
-        <i class="bi bi-funnel"></i> Filter
+  
+    <!-- Filter Button (icon only) -->
+    <div class="col-auto">
+      <button id="btn-filter" class="btn btn-secondary w-100" style="height:100%;">
+        <i class="bi bi-funnel"></i>
       </button>
     </div>
-
+  
   </div>
 
   <!-- Totals -->
@@ -228,6 +231,7 @@ if(path==="sales.html") $("#nav-sales").addClass("active");
 
 </body>
 </html>
+
 
 
 
